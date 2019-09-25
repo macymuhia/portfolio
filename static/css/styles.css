@@ -5,3 +5,7 @@
 .nav {
     height: 98vh;
 }
+
+.col-md-2 img {
+    width: 190px;
+}

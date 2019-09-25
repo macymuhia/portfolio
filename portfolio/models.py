@@ -3,12 +3,17 @@ from django.db import models
 # Create your models here.
 class Profile(models.Model):
     name = models.CharField(max_length=30)
-    profile_pic = models.ImageField(blank=True, default="")
+    profile_pic = models.ImageField(upload_to="profile/", default="")
     title = models.CharField(max_length=30)
     description = models.TextField(max_length=1000)
     github_url = models.URLField()
     linked_in_url = models.URLField()
     twitter_url = models.URLField()
+    pub_date = models.DateTimeField(auto_now_add=True)
+
+    @classmethod
+    def get_profile(cls):
+        return cls.objects.get(pk=1)
 
     def __str__(self):
         return self.name

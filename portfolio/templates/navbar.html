@@ -1,5 +1,8 @@
 <div class="col-md-2">
-    <div><img src="" class="img-responsive" alt=""></div>
+    <div><img src="{{profile.profile_pic.url}}" class="img-responsive img-circle" alt=""></div>
+    <h2>
+        {{profile.name}}
+    </h2>
     <ul class="nav flex-column text-center">
         <li class="nav-item">
             <p></p>
@@ -16,4 +19,7 @@
         {% endfor %}
 
     </ul>
+    <p>
+        {{ profile.pub_date }}
+    </p>
 </div>
