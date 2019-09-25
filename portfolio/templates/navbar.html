@@ -2,16 +2,18 @@
     <div><img src="" class="img-responsive" alt=""></div>
     <ul class="nav flex-column text-center">
         <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
+            <p></p>
         </li>
+        {% for menu in menus %}
+
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link active" href="#">{{menu.name}}</a>
         </li>
+        {% empty %}
         <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <p>No menus</p>
         </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
+        {% endfor %}
+
     </ul>
 </div>
