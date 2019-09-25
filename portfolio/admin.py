@@ -16,4 +16,6 @@ class ProjectAdmin(admin.ModelAdmin):
     inlines = [ProjectImageInline, ProjectTechInline]
 
 
-admin.site.register(Profile, Menu, Project, ProjectAdmin)
+admin.site.register(Project, ProjectAdmin)
+admin.site.register(Profile)
+admin.site.register(Menu)
