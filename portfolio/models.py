@@ -23,10 +23,14 @@ class Project(models.Model):
 
 
 class ProjectImage(models.Model):
-    project = models.ForeignKey(Project, related_name="images")
+    project = models.ForeignKey(
+        Project, related_name="images", on_delete=models.CASCADE
+    )
     image = models.ImageField()
 
 
 class ProjectTech(models.Model):
-    project = models.ForeignKey(Project, related_name="technologies")
+    project = models.ForeignKey(
+        Project, related_name="technologies", on_delete=models.CASCADE
+    )
     name = models.CharField(max_length=20)
