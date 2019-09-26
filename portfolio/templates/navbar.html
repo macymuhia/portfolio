@@ -1,9 +1,10 @@
-<div class="col-md-2">
+{% load fontawesome_5 %}
+<div class="col-md-2 text-center">
     <div><img src="{{profile.profile_pic.url}}" class="img-responsive img-circle" alt=""></div>
     <h2>
         {{profile.name}}
     </h2>
-    <ul class="nav flex-column text-center">
+    <ul class="nav flex-column">
         <li class="nav-item">
             <p></p>
         </li>
@@ -19,7 +20,15 @@
         {% endfor %}
 
     </ul>
-    <p>
-        {{ profile.pub_date }}
-    </p>
+    <div class="social">
+        <a href="{{profile.github}}" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="{{profile.linkedin}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="{{profile.twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
+
+    </div>
+    <div class="copyright">
+        <p>
+            &COPY;&nbsp;{{ profile.yearpublished }}
+        </p>
+    </div>
 </div>

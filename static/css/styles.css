@@ -2,10 +2,12 @@
     border: 1px solid red;
 }
 
-.nav {
-    height: 98vh;
+.col-md-2 {
+    height: 100vh;
 }
 
 .col-md-2 img {
-    width: 190px;
+    width: 150px;
+    height: 190px;
+    margin: auto;
 }
