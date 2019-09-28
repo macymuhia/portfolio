@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from fontawesome_5.fields import IconField
 
 # Create your models here.
@@ -25,11 +26,30 @@ class Profile(models.Model):
 
 class Menu(models.Model):
     name = models.CharField(max_length=10)
+    url = models.TextField(max_length=255, blank=True, null=True)
     description = models.TextField(max_length=255)
+    weight = models.IntegerField(default=1)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ("weight",)
 
     @classmethod
     def get_all_menus(cls):
         return cls.objects.all()
+
+    def get_url(self, item_dict):
+        """
+        Given a menu item dictionary, it returns the URL or an empty string.
+        """
+        final_url = ""
+        url = item_dict.get("url", "")
+        try:
+            final_url = reverse(url)
+        except NoReverseMatch:
+            final_url = url
+        return final_url
 
     def __str__(self):
         return self.name
@@ -56,3 +76,17 @@ class ProjectTech(models.Model):
         Project, related_name="technologies", on_delete=models.CASCADE
     )
     name = models.CharField(max_length=20)
+    image = models.ImageField()
+
+    @classmethod
+    def get_all_technologies(cls):
+        return cls.objects.all()
+
+
+class Quote(models.Model):
+    quote = models.TextField(max_length=500)
+    author = models.CharField(max_length=20)
+
+    @classmethod
+    def get_all_quotes(cls):
+        return cls.objects.all()

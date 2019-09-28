@@ -1,9 +1,31 @@
 from django.shortcuts import render
+import random
 from .models import *
 
 # Create your views here.
-def index(request):
+def home(request):
     menus = Menu.get_all_menus()
     profile = Profile.get_profile()
-    return render(request, "index.html", {"menus": menus, "profile": profile})
+    mistari = Quote.get_all_quotes()
+    mstari = random.choice(mistari)
+    return render(
+        request, "home.html", {"menus": menus, "profile": profile, "mstari": mstari}
+    )
 
+
+def about(request):
+    menus = Menu.get_all_menus()
+    profile = Profile.get_profile()
+    return render(request, "about.html", {"menus": menus, "profile": profile})
+
+
+def projects(request):
+    menus = Menu.get_all_menus()
+    profile = Profile.get_profile()
+    return render(request, "about.html", {"menus": menus, "profile": profile})
+
+
+def contacts(request):
+    menus = Menu.get_all_menus()
+    profile = Profile.get_profile()
+    return render(request, "about.html", {"menus": menus, "profile": profile})

@@ -1,34 +1,63 @@
 {% load fontawesome_5 %}
-<div class="col-md-2 text-center">
-    <div><img src="{{profile.profile_pic.url}}" class="img-responsive img-circle" alt=""></div>
-    <h2>
-        {{profile.name}}
-    </h2>
-    <ul class="nav flex-column">
-        <li class="nav-item">
-            <p></p>
-        </li>
-        {% for menu in menus %}
+<div class="aside">
+    <div class="col-md-2 text-center">
+        <div><img src="{{profile.profile_pic.url}}" class="img-responsive img-circle" alt=""></div>
+        <h2>
+            {{profile.name}}
 
-        <li class="nav-item">
-            <a class="nav-link active" href="#">{{menu.name}}</a>
-        </li>
-        {% empty %}
-        <li class="nav-item">
-            <p>No menus</p>
-        </li>
-        {% endfor %}
+        </h2>
 
-    </ul>
-    <div class="social">
-        <a href="{{profile.github}}" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="{{profile.linkedin}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-        <a href="{{profile.twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">
+                    <hr class="border">
+                </a>
+            </li>
+            {% for menu in menus %}
 
-    </div>
-    <div class="copyright">
-        <p>
-            &COPY;&nbsp;{{ profile.yearpublished }}
-        </p>
+            <li class="nav-item">
+                <a class="nav-link active" href="{{ menu.url }}">
+                        {{menu.name}}
+                        <hr class="border">
+                </a>
+            </li>
+            {% empty %}
+            <li class="nav-item">
+                <p>No menus</p>
+            </li>
+            {% endfor %}
+
+        </ul>
+        <div class="social">
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="{{profile.github}}" target="_blank">
+                        <h3>
+                            <i class="fab fa-github"></i>
+                        </h3>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{profile.linkedin}}" target="_blank">
+                        <h3>
+                            <i class="fab fa-linkedin-in"></i>
+                        </h3>
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="{{profile.twitter}}" target="_blank">
+                        <h3>
+                            <i class="fab fa-twitter"></i>
+                        </h3>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div class="copyright">
+            <p>
+                &COPY;&nbsp;{{ profile.yearpublished }}
+            </p>
+        </div>
     </div>
 </div>
