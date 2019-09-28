@@ -16,7 +16,19 @@ def home(request):
 def about(request):
     menus = Menu.get_all_menus()
     profile = Profile.get_profile()
-    return render(request, "about.html", {"menus": menus, "profile": profile})
+    categories = SkillCategory.get_all_categories()
+    technologies = Technology.get_technologies_in_category()
+    # print(technologies)
+    return render(
+        request,
+        "about.html",
+        {
+            "menus": menus,
+            "profile": profile,
+            "categories": categories,
+            "technologies": technologies,
+        },
+    )
 
 
 def projects(request):

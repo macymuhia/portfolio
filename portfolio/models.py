@@ -39,18 +39,6 @@ class Menu(models.Model):
     def get_all_menus(cls):
         return cls.objects.all()
 
-    def get_url(self, item_dict):
-        """
-        Given a menu item dictionary, it returns the URL or an empty string.
-        """
-        final_url = ""
-        url = item_dict.get("url", "")
-        try:
-            final_url = reverse(url)
-        except NoReverseMatch:
-            final_url = url
-        return final_url
-
     def __str__(self):
         return self.name
 
@@ -68,7 +56,7 @@ class ProjectImage(models.Model):
     project = models.ForeignKey(
         Project, related_name="images", on_delete=models.CASCADE
     )
-    image = models.ImageField()
+    image = models.ImageField(upload_to="screenshots/", default="")
 
 
 class ProjectTech(models.Model):
@@ -76,7 +64,7 @@ class ProjectTech(models.Model):
         Project, related_name="technologies", on_delete=models.CASCADE
     )
     name = models.CharField(max_length=20)
-    image = models.ImageField()
+    image = models.ImageField(upload_to="tech/", default="")
 
     @classmethod
     def get_all_technologies(cls):
@@ -90,3 +78,40 @@ class Quote(models.Model):
     @classmethod
     def get_all_quotes(cls):
         return cls.objects.all()
+
+
+class SkillCategory(models.Model):
+    category = models.CharField(max_length=20)
+
+    class Meta:
+        verbose_name_plural = "Skill Categories"
+
+    @classmethod
+    def get_all_categories(cls):
+        return cls.objects.all()
+
+    def __str__(self):
+        return self.category
+
+
+class Technology(models.Model):
+    technology = models.ForeignKey(
+        SkillCategory, related_name="skills", on_delete=models.CASCADE
+    )
+    name = models.CharField(max_length=20)
+    icon = models.ImageField(upload_to="technology/", default="")
+
+    class Meta:
+        ordering = ("id",)
+        verbose_name_plural = "Technologies"
+
+    @classmethod
+    def get_technologies_in_category(cls):
+        return cls.objects.select_related("technology")
+
+    @classmethod
+    def get_all_technologies(cls):
+        return cls.objects.all()
+
+    def __str__(self):
+        return self.name

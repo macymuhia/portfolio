@@ -1,40 +1,66 @@
 {% extends 'base.html' %}
 <div class="container-fluid">
     {% block content %}
-    <div class="col-md-10">
-        <div class="about">
-            <header>
-                <div class="text-center">
-                    <h1>About . . .</h1>
-                </div>
-            </header>
+    <div class="menu">
+        <div class="col-md-10">
+            <div class="about">
+                <header>
+                    <div class="text-center">
+                        <h1>About . . .</h1>
+                    </div>
+                </header>
 
-            <main>
-                <div class="card text-center">
-                    <div class="card-header">
-                        <h3>Personal Statement</h3>
+                <main>
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <h3>Personal Statement</h3>
+                        </div>
+                        <div class="card-body">
+                            <p>
+                                {{profile.description}}
+                            </p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <p>
-                            {{profile.description}}
-                        </p>
-                    </div>
-                </div>
-                <div class="card text-center">
-                    <div class="card-header">
-                        <h3>Skills</h3>
-                    </div>
-                    <div class="card-body">
-                        <p>
-                            {{profile.description}}
-                        </p>
-                    </div>
-                </div>
-            </main>
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <h3>Skills</h3>
+                        </div>
+                        <div class="card-body">
 
+                            {% regroup technologies by technology as category_list%}
+                            <div class="row">
+                                {% for category in category_list %}
+
+                                <div class="col-md-3">
+                                    <h3>
+                                        {{category.grouper}}
+                                    </h3>
+                                </div>
+                                <div class="col-md-9">
+
+                                    <div class="row">
+                                        {% for cat in category.list %}
+                                        <div class="col-md-3">
+                                            <img src="{{ cat.icon.url }}" class="img-responsive" alt="">
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+
+                                    <hr class="border1">
+                                </div>
+
+                                {% endfor %}
+                            </div>
+
+
+                        </div>
+                    </div>
+                </main>
+
+            </div>
+            <!-- <p>{{profile.description}}</p> -->
         </div>
-        <!-- <p>{{profile.description}}</p> -->
     </div>
+    <!-- end content block -->
+    {% endblock %}
 </div>
-<!-- end content block -->
-{% endblock %}

@@ -17,6 +17,15 @@ class ProjectAdmin(admin.ModelAdmin):
     inlines = [ProjectImageInline, ProjectTechInline]
 
 
+class TechnologyInline(admin.TabularInline):
+    model = Technology
+    extra = 1
+
+
+class SkillCategoryAdmin(admin.ModelAdmin):
+    inlines = [TechnologyInline]
+
+
 class MenuAdmin(admin.ModelAdmin):
     model = Menu
     list_display = ("name", "weight")
@@ -24,6 +33,7 @@ class MenuAdmin(admin.ModelAdmin):
 
 # model registered with custom admin
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(SkillCategory, SkillCategoryAdmin)
 admin.site.register(Profile)
 admin.site.register(Menu, MenuAdmin)
 admin.site.register(Quote)
