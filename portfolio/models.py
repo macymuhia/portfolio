@@ -47,6 +47,11 @@ class Project(models.Model):
     name = models.CharField(max_length=30)
     description = models.TextField(max_length=255)
     project_url = models.URLField()
+    image = models.ImageField(upload_to="covers/", default="")
+
+    @classmethod
+    def get_all_projects(cls):
+        return cls.objects.all()
 
     def __str__(self):
         return self.name

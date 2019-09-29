@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+<div class="container-fluid">
+    {% block content %}
+    <div class="menu">
+        <div class="col-md-10">
+            <div class="projects">
+                <header>
+                    <div class="text-center">
+                        <h1>Projects . . .</h1>
+                    </div>
+                </header>
+
+                <main>
+                    <div class="row">
+                        {% for project in projects %}
+                        <div class="col-md-6">
+                            <!-- <h2> {{ project.name }} </h2> -->
+                            <img src="{{ project.image.url }}" class="img-responsive img-rounded" alt="">
+                        </div>
+                        {% empty %}
+                        <div class="card text-center">
+                            <h3>No Projects yet</h3>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+
+                </main>
+
+            </div>
+        </div>
+    </div>
+    <!-- end content block -->
+    {% endblock %}
+</div>

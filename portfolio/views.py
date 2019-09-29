@@ -34,10 +34,15 @@ def about(request):
 def projects(request):
     menus = Menu.get_all_menus()
     profile = Profile.get_profile()
-    return render(request, "about.html", {"menus": menus, "profile": profile})
+    projects = Project.get_all_projects()
+    return render(
+        request,
+        "projects.html",
+        {"menus": menus, "profile": profile, "projects": projects},
+    )
 
 
 def contacts(request):
     menus = Menu.get_all_menus()
     profile = Profile.get_profile()
-    return render(request, "about.html", {"menus": menus, "profile": profile})
+    return render(request, "contacts.html", {"menus": menus, "profile": profile})
