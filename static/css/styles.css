@@ -146,9 +146,19 @@ div.social {
     transition: .5s;
 }
 
+div#myCarousel.carousel.slide,
+.carousel-inner>.item>img {
+    border-radius: 7px;
+}
+
 .projects .card {
-    margin: 5%;
+    margin: 5% 3%;
     padding: 1%;
+}
+
+.project .card {
+    margin: 3% 5%;
+    padding: 0.5%;
 }
 
 .card:hover {
@@ -172,6 +182,17 @@ div.social {
 .col-md-9 img.img-responsive {
     width: 100px;
     max-height: 100px;
+}
+
+.card.description,
+.card.technologies {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.card.technologies {
+    padding-bottom: 3%;
+    min-height: 150px;
 }
 
 .card-body .row .col-md-9 {

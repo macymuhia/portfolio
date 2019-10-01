@@ -67,6 +67,10 @@ class ProjectImage(models.Model):
     )
     image = models.ImageField(upload_to="screenshots/", default="")
 
+    @classmethod
+    def get_images_of_project(cls, id):
+        return cls.objects.filter(project_id=id)
+
 
 class ProjectTech(models.Model):
     project = models.ForeignKey(
@@ -78,6 +82,10 @@ class ProjectTech(models.Model):
     @classmethod
     def get_all_technologies(cls):
         return cls.objects.all()
+
+    @classmethod
+    def get_technologies_of_project(cls, id):
+        return cls.objects.filter(project_id=id)
 
 
 class Quote(models.Model):

@@ -46,10 +46,18 @@ def project(request, id):
     menus = Menu.get_all_menus()
     profile = Profile.get_profile()
     project = Project.get_single_project(id)
+    images = ProjectImage.get_images_of_project(id)
+    technologies = ProjectTech.get_technologies_of_project(id)
     return render(
         request,
         "project.html",
-        {"menus": menus, "profile": profile, "project": project},
+        {
+            "menus": menus,
+            "profile": profile,
+            "project": project,
+            "images": images,
+            "technologies": technologies,
+        },
     )
 
 
