@@ -141,7 +141,23 @@ div.social {
     background-color: #ddc7df;
     margin: 10% 5%;
     padding: 3% 5%;
-    border-radius: 5px;
+    border-radius: 7px;
+    transform: translateY(0px);
+    transition: .5s;
+}
+
+.projects .card {
+    margin: 5%;
+    padding: 1%;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    transition: .5s;
+}
+
+.projects img.img-responsive.img-rounded {
+    margin: 0%;
 }
 
 .about .card {
@@ -165,5 +181,4 @@ div.social {
 .col-md-6 img {
     width: 500px;
     margin: 3% 1%;
-    float: left;
 }

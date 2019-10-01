@@ -42,6 +42,17 @@ def projects(request):
     )
 
 
+def project(request, id):
+    menus = Menu.get_all_menus()
+    profile = Profile.get_profile()
+    project = Project.get_single_project(id)
+    return render(
+        request,
+        "project.html",
+        {"menus": menus, "profile": profile, "project": project},
+    )
+
+
 def contacts(request):
     menus = Menu.get_all_menus()
     profile = Profile.get_profile()

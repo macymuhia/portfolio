@@ -53,6 +53,10 @@ class Project(models.Model):
     def get_all_projects(cls):
         return cls.objects.all()
 
+    @classmethod
+    def get_single_project(cls, id):
+        return cls.objects.get(pk=id)
+
     def __str__(self):
         return self.name
 
