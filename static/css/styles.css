@@ -156,9 +156,10 @@ div#myCarousel.carousel.slide,
     padding: 1%;
 }
 
-.project .card {
+.project .card,
+.contacts .card {
     margin: 3% 5%;
-    padding: 0.5%;
+    padding: 1%;
 }
 
 .card:hover {
@@ -202,4 +203,20 @@ div#myCarousel.carousel.slide,
 .col-md-6 img {
     width: 500px;
     margin: 3% 1%;
+}
+
+.contacts .card {
+    margin: 3% 20%;
+}
+
+.contacts p a {
+    color: #834180;
+}
+
+.contacts img.img-responsive {
+    max-height: 400px;
+    margin: auto;
+    border-radius: 7px;
+    padding-bottom: 3%;
+    padding-top: 3%;
 }

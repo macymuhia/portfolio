@@ -8,10 +8,12 @@ class Profile(models.Model):
     profile_pic = models.ImageField(upload_to="profile/", default="")
     title = models.CharField(max_length=30)
     description = models.TextField(max_length=1000)
+    email = models.EmailField(default="")
     github = models.URLField()
     linkedin = models.URLField()
     twitter = models.URLField()
     pub_date = models.DateTimeField(auto_now_add=True)
+    handshake = models.ImageField(upload_to="profile/", default="")
 
     @classmethod
     def get_profile(cls):
