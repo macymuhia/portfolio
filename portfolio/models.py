@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from fontawesome_5.fields import IconField
 
 # Create your models here.
 class Profile(models.Model):
